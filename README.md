@@ -1,6 +1,6 @@
-# DFT Mini Project — Industry DFT Flow in Minimal Form
+# DFT Mini Project — DFT Flow in Minimal Form
 
-A self-contained Verilog project that walks through the **complete DFT (Design for Testability) flow** as practiced in the semiconductor industry — from scan insertion through LBIST — using a tiny but real design.
+A self-contained Verilog project that walks through the **complete DFT (Design for Testability) flow** as practiced in the semiconductor industry, from scan insertion through LBIST using a tiny but real design.
 
 ---
 
@@ -51,15 +51,6 @@ See `rtl/my_design.v` — the 4 FFs inside cannot be individually observed from 
 ---
 
 ### 2. Scan DFF — The Fundamental DFT Cell
-
-```
-         ┌───────┐
-  D ────▶│  MUX  │──▶ D ──[ DFF ]──▶ Q (= SO for chaining)
-  SI ───▶│       │         
-         └───────┘
-              ▲
-             SE (Scan Enable)
-```
 
 - **SE = 0** (Capture / Normal): `Q ← D` — standard DFF behaviour  
 - **SE = 1** (Shift / Scan): `Q ← SI` — acts as a simple shift register cell
@@ -182,23 +173,12 @@ make view     # open waveform in GTKWave
 make clean    # remove build artifacts
 ```
 
-### Expected Output
+### Output
+<img width="581" height="780" alt="image" src="https://github.com/user-attachments/assets/7e6f2a09-8f8f-4df8-bf3c-098b523f727c" />
 
-```
-----------------------------------------------------
- LBIST SIMULATION START
-----------------------------------------------------
-[Pattern 0]
-  SHIFT IN  (4 cycles, SE=1)
-  CAPTURE   (1 cycle,  SE=0)  q=0111
-  SHIFT OUT (4 cycles, SE=1)  sig=000
-...
-----------------------------------------------------
- LBIST COMPLETE
- Final Signature = 010  (hex: 2)
- [PASS] Signature matches golden reference.
-----------------------------------------------------
-```
+
+
+
 
 ---
 
